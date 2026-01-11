@@ -3,8 +3,7 @@
     <div class="max-w-4xl mx-auto">
       <!-- Header -->
       <div class="text-center mb-8">
-        <h1 class="text-4xl font-bold text-white mb-2">數字轉國字大寫</h1>
-        <p class="text-white/80 text-lg">新台幣金融表示轉換工具</p>
+        <h1 class="text-4xl font-bold text-gray-800 mb-2">金融票據數字轉國字大寫</h1>
       </div>
 
       <!-- Main Card -->
@@ -30,11 +29,11 @@
         </div>
 
         <!-- Number Reference Table -->
-        <div class="mb-8 bg-gradient-to-r from-amber-50 to-yellow-50 border-2 border-amber-200 rounded-xl p-4">
+        <div class="mb-8 bg-gradient-to-r rounded-xl">
           <div class="grid grid-cols-5 sm:grid-cols-10 gap-2">
             <div v-for="(big, index) in BIGS" :key="index" 
-                 class="flex flex-col items-center justify-center bg-white rounded-lg p-2 border border-amber-300">
-              <span class="text-lg font-bold text-purple-700">{{ big }}</span>
+                 class="flex flex-col items-center justify-center bg-white rounded-lg ">
+              <span class="text-4xl font-bold text-gray-700">{{ big }}</span>
               <span class="text-lg text-gray-500 mt-1">{{ index }}</span>
             </div>
           </div>
@@ -59,7 +58,6 @@
         <div class="mb-8">
           <h2 class="text-xl font-bold text-gray-800 mb-3">填空 (大寫)</h2>
           <div class="bg-gradient-to-r from-blue-50 to-cyan-50 border-2 border-blue-200 rounded-xl p-6">
-            <div class="text-sm text-gray-600 mb-3">新台幣 (大寫)</div>
             <div class="flex flex-wrap items-center justify-center gap-1 text-lg relative">
               <template v-for="(digit, index) in fillBlankDigits" :key="index">
                 <span 
@@ -87,12 +85,12 @@
           <div class="overflow-x-auto rounded-xl border-2 border-gray-200">
             <table class="w-full text-center border-collapse">
               <thead>
-                <tr class="bg-gradient-to-r from-purple-100 to-pink-100">
+                <tr class="bg-gradient-to-r from-gray-100 to-gray-200">
                   <th class="px-4 py-3 font-bold text-gray-700 border-r-2 border-white">金額</th>
                   <th v-for="(unit, index) in tableUnits" :key="index" 
                       class="px-2 py-3 font-medium text-gray-700 border-r-2 border-white last:border-r-0">
                     <div>{{ unit.main }}</div>
-                    <div class="text-xs" v-if="unit.sub">{{ unit.sub }}</div>
+                    <div class="" v-if="unit.sub">{{ unit.sub }}</div>
                   </th>
                 </tr>
               </thead>
@@ -100,7 +98,6 @@
                 <tr class="bg-white">
                   <td class="px-4 py-4 font-medium text-gray-700 border-r-2 border-gray-200">
                     <div>新台幣</div>
-                    <div class="text-sm">(大寫)</div>
                   </td>
                   <td v-for="(digit, index) in tableDigits" :key="index"
                       :class="[
@@ -108,7 +105,7 @@
                         digit.isStrikethrough ? 'bg-red-50' : ''
                       ]"
                   >
-                    <span v-if="!digit.isStrikethrough" class="text-purple-700">{{ digit.value }}</span>
+                    <span v-if="!digit.isStrikethrough" class="text-gray-700">{{ digit.value }}</span>
                     <span v-if="digit.isStrikethrough" class="absolute inset-0 flex items-center justify-center pointer-events-none">
                       <span class="block w-full h-1 bg-red-500"></span>
                     </span>
@@ -130,7 +127,7 @@
                   <th v-for="(unit, index) in tableUnits" :key="index" 
                       class="px-2 py-3 font-medium text-gray-700 border-r-2 border-white last:border-r-0">
                     <div>{{ unit.main }}</div>
-                    <div class="text-xs" v-if="unit.sub">{{ unit.sub }}</div>
+                    <div class="" v-if="unit.sub">{{ unit.sub }}</div>
                   </th>
                 </tr>
               </thead>
@@ -138,7 +135,6 @@
                 <tr class="bg-white">
                   <td class="px-4 py-4 font-medium text-gray-700 border-r-2 border-gray-200">
                     <div>新台幣</div>
-                    <div class="text-sm">(小寫)</div>
                   </td>
                   <td v-for="(digit, index) in normalDigits" :key="index"
                       :class="[
